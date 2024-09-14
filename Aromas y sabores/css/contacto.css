@@ -1,0 +1,118 @@
+/* Estilos generales (igual que en las otras páginas) */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333333;
+    background-color: #FFF5E6;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #FF9B55;
+    color: #FFF5E6;
+    text-align: center;
+    padding: 1rem;
+}
+
+h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #FFF5E6;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    color: #FFD699;
+}
+
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h2 {
+    color: #FF6B35;
+    border-bottom: 2px solid #FF6B35;
+    padding-bottom: 10px;
+}
+
+/* Estilos específicos para la página de contacto */
+section {
+    background-color: #FFFFFF;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+#informacion-contacto p,
+#horario p {
+    margin: 5px 0;
+}
+
+form {
+    background-color: #FFFFFF;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #FF6B35;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #FFD699;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #FF9B55;
+    color: #FFF5E6;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #FF6B35;
+}
+
+footer {
+    background-color: #FF9B55;
+    color: #FFF5E6;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

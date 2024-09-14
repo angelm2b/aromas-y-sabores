@@ -1,0 +1,54 @@
+/* Estilos específicos para la página de administración */
+#menu-actual,
+#editar-menu {
+    background-color: #FFFFFF;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #FF6B35;
+}
+
+input[type="text"],
+select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #FFD699;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #FF9B55;
+    color: #FFF5E6;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #FF6B35;
+}
+
+#menu-list {
+    margin-top: 20px;
+}
+
+.menu-item {
+    border-bottom: 1px solid #FFD699;
+    padding: 10px 0;
+}
+
+.menu-item:last-child {
+    border-bottom: none;
+}

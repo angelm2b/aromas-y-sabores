@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aromas y Sabores By MC - Inicio</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        .hero {
+            background-image: url('/imagenes/mediterranean-cuisine-2378758.jpg');
+            background-size: cover;
+            background-position: top;
+            color: #fff;
+            text-align: center;
+            padding: 150px 0;
+        }
+        .hero h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 40px;
+        }
+        .feature {
+            flex-basis: calc(33.333% - 20px);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        @media screen and (max-width: 768px) {
+            .feature {
+                flex-basis: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container_header">
+            <h1>Aromas y Sabores By MC</h1>
+            <nav>
+                <ul>
+                    <li><a href="/index.html"class="active">Inicio</a></li>
+                    <li><a href="/menu.html">Menú</a></li>
+                    <li><a href="/contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h2>Bienvenidos a Aromas y Sabores By MC</h2>
+                <p>Descubre el auténtico sabor de la comida casera</p>
+                <a href="/menu.html" class="btn">Ver Menú</a>
+            </div>
+        </section>
+
+        <section class="container">
+            <h2>¿Por qué elegirnos?</h2>
+            <div class="features">
+                <div class="feature">
+                    <h3>Comida Casera</h3>
+                    <p>Preparamos platos con el amor y cuidado de la cocina de casa.</p>
+                </div>
+                <div class="feature">
+                    <h3>Ingredientes Frescos</h3>
+                    <p>Utilizamos solo los ingredientes más frescos y de alta calidad.</p>
+                </div>
+                <div class="feature">
+                    <h3>Menú Variado</h3>
+                    <p>Ofrecemos una amplia variedad de platos para todos los gustos.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container_footer">
+            <p>&copy; 2024 Aromas y Sabores By MC. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,22 @@
+/* Estilos específicos para la página de menú */
+.menu-dia {
+    background-color: #FFFFFF;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.menu-dia h3 {
+    color: #fb934c;
+    margin-top: 0;
+}
+
+.menu-dia ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.menu-dia li {
+    margin-bottom: 10px;
+}

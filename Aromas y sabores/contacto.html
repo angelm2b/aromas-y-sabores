@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aromas y Sabores By MC - Contacto</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .contact-info, .map-container {
+            flex-basis: 100%;
+            margin-bottom: 20px;
+            align-items: normal;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: start;
+            margin-top: 20px;
+        }
+        .social-icons a {
+            margin-right: 15px;
+        }
+        .social-icons img {
+            width: 40px;
+            height: 40px;
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 450px;
+            border: 0;
+        }
+        @media screen and (min-width: 768px) {
+            .contact-info, .map-container {
+                flex-basis: calc(50% - 10px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Aromas y Sabores By MC</h1>
+            <nav>
+                <ul>
+                    <li><a href="/index.html">Inicio</a></li>
+                    <li><a href="/menu.html">Menú</a></li>
+                    <li><a href="/contacto.html"class="active">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="container">
+        <h2>Contacto</h2>
+        
+        <div class="contact-container">
+            <section class="contact-info">
+                <h3>Información de Contacto</h3>
+                <p><strong>Dirección:</strong> Av. Alemania, Punta Cana 23000, República Dominicana</p>
+                <p><strong>Teléfono:</strong> +1 809-123-4567</p>
+                <p><strong>Email:</strong> info@aromasysaboresbymc.com</p>
+                <p><strong>Horario:</strong> Lunes a Viernes, 9:00 AM - 6:00 PM</p>
+                
+                <div class="social-icons">
+                    <a href="https://facebook.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/128/733/733547.png" alt="Facebook"></a>
+                    <a href="https://instagram.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/128/2111/2111463.png" alt="Instagram"></a>
+                    <a href="https://twitter.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/128/733/733579.png" alt="Twitter"></a>
+                </div>
+            </section>
+            
+            <section class="map-container">
+                <h3>Nuestra Ubicación</h3>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30174.17846939!2d-68.44020064179687!3d18.58222!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8ea8eb9d4f5faf0d%3A0x8e3e9c87d6a3a0e!2sPunta%20Cana%2C%20Rep%C3%BAblica%20Dominicana!5e0!3m2!1ses!2ses!4v1631234567890!5m2!1ses!2ses" allowfullscreen="" loading="lazy"></iframe>
+            </section>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Aromas y Sabores By MC. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>

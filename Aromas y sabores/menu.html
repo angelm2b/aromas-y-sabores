@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aromas y Sabores By MC - Menú Semanal</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        .menu-dia {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .menu-dia h3 {
+            color: #2c3e50;
+            border-bottom: 2px solid #fb934c;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .menu-dia ul {
+            list-style-type: none;
+        }
+        .menu-dia li {
+            margin-bottom: 10px;
+        }
+        .menu-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        @media screen and (min-width: 768px) {
+            .menu-container {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            .menu-dia {
+                flex-basis: calc(50% - 10px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Aromas y Sabores By MC</h1>
+            <nav>
+                <ul>
+                    <li><a href="/index.html">Inicio</a></li>
+                    <li><a href="/menu.html"class="active">Menú</a></li>
+                    <li><a href="/contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="container">
+        <h2>Menú Semanal</h2>
+        <div class="menu-container">
+            <!-- El contenido del menú se cargará dinámicamente aquí -->
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Aromas y Sabores By MC. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="/js/menu.js"></script>
+</body>
+</html>

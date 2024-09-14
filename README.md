@@ -2,7 +2,7 @@
 
 Pagina web de un menu para un restaurante
 
-![Aromas y Sabores By MC](https://aromas-y-sabores.vercel.app/imagenes/Aromas y sabores.jpeg)
+![Aromas y Sabores By MC](https://aromas-y-sabores.vercel.app/imagenes/AyS.jpeg)
 
 ## Bienvenidos a mi rincón culinario
 

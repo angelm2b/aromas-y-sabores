@@ -91,6 +91,7 @@ textarea {
     padding: 8px;
     border: 1px solid #FFD699;
     border-radius: 4px;
+    box-sizing: border-box;
 }
 
 button {

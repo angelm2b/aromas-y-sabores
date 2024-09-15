@@ -1,5 +1,5 @@
 // Definimos la ruta de la imagen por defecto
-const DEFAULT_IMAGE = '/imagenes/Plato vacio.jpg';
+const DEFAULT_IMAGE = './imagenes/Plato vacio.jpg';
 
 // Función para obtener la fecha del próximo día de la semana
 function getNextDayOfWeek(dayName) {
@@ -13,7 +13,10 @@ function getNextDayOfWeek(dayName) {
 
 // Función para formatear la fecha
 function formatDate(date) {
-    return date.getDate().toString().padStart(2, '0');
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
 }
 
 // Función para cargar el menú desde el almacenamiento local

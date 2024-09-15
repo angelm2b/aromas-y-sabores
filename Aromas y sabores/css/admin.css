@@ -1,4 +1,6 @@
 /* Estilos específicos para la página de administración */
+
+/* Menu styles */
 #menu-actual,
 #editar-menu {
     background-color: #FFFFFF;
@@ -8,16 +10,19 @@
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
+/* Form group styles */
 .form-group {
     margin-bottom: 15px;
 }
 
+/* Label styles */
 label {
     display: block;
     margin-bottom: 5px;
     color: #FF6B35;
 }
 
+/* Input and select styles */
 input[type="text"],
 select {
     width: 100%;
@@ -26,6 +31,7 @@ select {
     border-radius: 4px;
 }
 
+/* Button styles */
 button {
     background-color: #FF9B55;
     color: #FFF5E6;
@@ -40,10 +46,12 @@ button:hover {
     background-color: #FF6B35;
 }
 
+/* Menu list styles */
 #menu-list {
     margin-top: 20px;
 }
 
+/* Menu item styles */
 .menu-item {
     border-bottom: 1px solid #FFD699;
     padding: 10px 0;

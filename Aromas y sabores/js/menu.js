@@ -3,7 +3,7 @@ const DEFAULT_IMAGE = '/imagenes/Plato vacio.jpg';
 
 // Función para cargar el menú desde el almacenamiento local
 function cargarMenu() {
-    const menuGuardado = localStorage.getItem('menuSemanal');
+    const menuGuardado = typeof localStorage !== 'undefined' ? localStorage.getItem('menuSemanal') : null;
     return menuGuardado ? JSON.parse(menuGuardado) : {
         lunes: { fecha: "01", plato: "Arroz con pollo", descripcion: "Arroz blanco con pollo guisado", precio: 150.00, imagen: DEFAULT_IMAGE },
         martes: { fecha: "02", plato: "Lasaña de carne", descripcion: "Lasaña casera con carne molida y salsa bechamel", precio: 150.00, imagen: DEFAULT_IMAGE },
@@ -17,7 +17,16 @@ function cargarMenu() {
 function mostrarMenu() {
     const menuSemanal = cargarMenu();
     const menuContainer = document.querySelector('.menu-container');
+    if (!menuContainer) {
+        console.error('Menu container element not found');
+        return;
+    }
     menuContainer.innerHTML = '';
+
+    if (!menuSemanal || Object.keys(menuSemanal).length === 0) {
+        console.error('No menu data available');
+        return;
+    }
 
     for (const [dia, menu] of Object.entries(menuSemanal)) {
         const menuDia = document.createElement('div');

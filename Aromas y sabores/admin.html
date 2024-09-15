@@ -87,7 +87,7 @@
                     
                     <label for="imagen">Imagen:</label>
                     <input type="file" id="imagen" name="imagen" accept="image/*">
-                    <img id="image-preview" src="#" alt="Vista previa de la imagen">
+                    <img id="image-preview" src="" alt="Vista previa de la imagen">
                     
                     <button type="submit">Guardar</button>
                 </form>
@@ -102,10 +102,22 @@
     
     <footer>
         <div class="container-footer">
-            <p>&copy; 2024 Aromas y Sabores By MC. Todos los derechos reservados.</p> <p>Sitio web creado por <a href="https://www.linkedin.com/in/angelm2b/">ANGELlM2B</a></p>
+            <p>&copy; 2024 Aromas y Sabores By MC. Todos los derechos reservados.</p><p>Sitio web creado por <a href="https://www.linkedin.com/in/angelm2b/">ANGELlM2B</a></p>
         </div>
     </footer>
     
+    <script>
+        document.getElementById('imagen').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('image-preview').src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
     <script src="/js/admin.js"></script>
 </body>
 </html>

@@ -115,8 +115,18 @@ function handleImagePreview(event) {
 // Event listeners
 document.addEventListener('DOMContentLoaded', () => {
     mostrarMenuActual();
-    document.getElementById('menu-form').addEventListener('submit', handleSubmit);
-    document.getElementById('imagen').addEventListener('change', handleImagePreview);
-    // Establecer la imagen por defecto al cargar la página
-    document.getElementById('image-preview').src = DEFAULT_IMAGE;
+    const menuForm = document.getElementById('menu-form');
+    const imagenInput = document.getElementById('imagen');
+    const imagePreview = document.getElementById('image-preview');
+
+    if (menuForm) {
+        menuForm.addEventListener('submit', handleSubmit);
+    }
+    if (imagenInput) {
+        imagenInput.addEventListener('change', handleImagePreview);
+    }
+    if (imagePreview) {
+        // Establecer la imagen por defecto al cargar la página
+        imagePreview.src = DEFAULT_IMAGE;
+    }
 });

@@ -101,6 +101,11 @@ footer {
   width: 100%;
 }
 
+footer a {
+  color: #ecf0f1;
+  text-decoration: none;
+}
+
 /* Responsive design */
 @media screen and (max-width: 768px) {
   nav ul {

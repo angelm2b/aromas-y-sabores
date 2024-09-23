@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,38 +12,54 @@
             flex-wrap: wrap;
             justify-content: space-between;
         }
-        .menu-form, .menu-list {
+
+        .menu-form,
+        .menu-list {
             flex-basis: 100%;
             margin-bottom: 20px;
         }
+
         @media screen and (min-width: 768px) {
-            .menu-form, .menu-list {
+
+            .menu-form,
+            .menu-list {
                 flex-basis: calc(50% - 10px);
             }
         }
+
         form {
             display: flex;
             flex-direction: column;
         }
-        form input, form textarea, form select {
+
+        form input,
+        form textarea,
+        form select {
             margin-bottom: 10px;
             padding: 5px;
         }
+
         #image-preview {
             max-width: 200px;
             margin-top: 10px;
         }
+
         .menu-item {
             border: 1px solid #ddd;
             padding: 10px;
             margin-bottom: 10px;
         }
+
         .menu-image {
             max-width: 100px;
             height: auto;
         }
     </style>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
 </head>
+
 <body>
     <header>
         <div class="container-header">
@@ -57,10 +74,10 @@
             </nav>
         </div>
     </header>
-    
+
     <main class="container">
         <h2>Administración del Menú</h2>
-        
+
         <div class="admin-container">
             <section class="menu-form">
                 <h3>Agregar/Editar Menú</h3>
@@ -73,46 +90,47 @@
                         <option value="jueves">Jueves</option>
                         <option value="viernes">Viernes</option>
                     </select>
-                    
+
                     <label for="fecha">Fecha:</label>
                     <input type="text" id="fecha" name="fecha" required placeholder="Ej: 16">
-                    
+
                     <label for="plato">Plato:</label>
                     <input type="text" id="plato" name="plato" required>
-                    
+
                     <label for="descripcion">Descripción:</label>
                     <textarea id="descripcion" name="descripcion" required></textarea>
-                    
+
                     <label for="precio">Precio:</label>
                     <input type="number" id="precio" name="precio" step="0.01" required>
-                    
+
                     <label for="imagen">Imagen:</label>
                     <input type="file" id="imagen" name="imagen" accept="image/*">
                     <img id="image-preview" src="" alt="Vista previa de la imagen">
-                    
+
                     <button type="submit">Guardar</button>
                 </form>
             </section>
-            
+
             <section class="menu-list">
                 <h3>Menú Actual</h3>
                 <div id="menu-list"></div>
             </section>
         </div>
     </main>
-    
+
     <footer>
         <div class="container-footer">
-            <p><a href="https://angelm2b.onrender.com" style=" text-decoration: none;"><strong>ANGELM2B</strong></a> © 2024 Aromas y Sabores By MC. Todos los derechos reservados.</p>
+            <p><a href="https://angelm2b.onrender.com" style=" text-decoration: none;"><strong>ANGELM2B</strong></a> ©
+                2024 Aromas y Sabores By MC. Todos los derechos reservados.</p>
         </div>
     </footer>
-    
+
     <script>
-        document.getElementById('imagen').addEventListener('change', function(event) {
+        document.getElementById('imagen').addEventListener('change', function (event) {
             const file = event.target.files[0];
             if (file) {
                 const reader = new FileReader();
-                reader.onload = function(e) {
+                reader.onload = function (e) {
                     document.getElementById('image-preview').src = e.target.result;
                 };
                 reader.readAsDataURL(file);
@@ -121,4 +139,6 @@
     </script>
     <script src="/js/admin.js"></script>
 </body>
+
 </html>
+

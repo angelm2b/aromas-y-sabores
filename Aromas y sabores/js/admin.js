@@ -1,3 +1,21 @@
+// Configuración de Firebase
+const firebaseConfig = {
+    apiKey: process.env.FIREBASE_API_KEY,
+    authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+    projectId: process.env.FIREBASE_PROJECT_ID,
+    storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.FIREBASE_APP_ID,
+    measurementId: process.env.FIREBASE_MEASUREMENT_ID
+};
+
+// Inicializar Firebase
+firebase.initializeApp(firebaseConfig);
+
+// Referencia a la base de datos
+const database = firebase.database();
+
+
 // Definimos la ruta de la imagen por defecto
 const DEFAULT_IMAGE = './imagenes/Plato vacio.jpg';
 
@@ -19,83 +37,98 @@ function formatDate(date) {
     return `${day}/${month}/${year}`;
 }
 
-// Función para cargar el menú desde el almacenamiento local
+// Función para cargar el menú desde Firebase
 function cargarMenu() {
-    const menuGuardado = localStorage.getItem('menuSemanal');
-    if (menuGuardado) {
-        return JSON.parse(menuGuardado);
-    } else {
-        const menuDefault = {
-            lunes: { fecha: formatDate(getNextDayOfWeek('lunes')), plato: "Arroz con pollo", descripcion: "Arroz blanco con pollo guisado", precio: 150.00, imagen: DEFAULT_IMAGE },
-            martes: { fecha: formatDate(getNextDayOfWeek('martes')), plato: "Lasaña de carne", descripcion: "Lasaña casera con carne molida y salsa bechamel", precio: 150.00, imagen: DEFAULT_IMAGE },
-            miercoles: { fecha: formatDate(getNextDayOfWeek('miércoles')), plato: "Pescado a la plancha", descripcion: "Filete de pescado a la plancha con puré de papas", precio: 150.00, imagen: DEFAULT_IMAGE },
-            jueves: { fecha: formatDate(getNextDayOfWeek('jueves')), plato: "Lomo saltado", descripcion: "Tiras de lomo fino salteadas con verduras y papas fritas", precio: 150.00, imagen: DEFAULT_IMAGE },
-            viernes: { fecha: formatDate(getNextDayOfWeek('viernes')), plato: "Paella mixta", descripcion: "Paella con mariscos, pollo y verduras", precio: 150.00, imagen: DEFAULT_IMAGE }
-        };
-        guardarMenu(menuDefault);
-        return menuDefault;
-    }
+    return database.ref('menuSemanal').once('value')
+        .then((snapshot) => {
+            if (snapshot.exists()) {
+                return snapshot.val();
+            } else {
+                const menuDefault = {
+                    lunes: { fecha: formatDate(getNextDayOfWeek('lunes')), plato: "Arroz con pollo", descripcion: "Arroz blanco con pollo guisado", precio: 150.00, imagen: DEFAULT_IMAGE },
+                    martes: { fecha: formatDate(getNextDayOfWeek('martes')), plato: "Lasaña de carne", descripcion: "Lasaña casera con carne molida y salsa bechamel", precio: 150.00, imagen: DEFAULT_IMAGE },
+                    miercoles: { fecha: formatDate(getNextDayOfWeek('miércoles')), plato: "Pescado a la plancha", descripcion: "Filete de pescado a la plancha con puré de papas", precio: 150.00, imagen: DEFAULT_IMAGE },
+                    jueves: { fecha: formatDate(getNextDayOfWeek('jueves')), plato: "Lomo saltado", descripcion: "Tiras de lomo fino salteadas con verduras y papas fritas", precio: 150.00, imagen: DEFAULT_IMAGE },
+                    viernes: { fecha: formatDate(getNextDayOfWeek('viernes')), plato: "Paella mixta", descripcion: "Paella con mariscos, pollo y verduras", precio: 150.00, imagen: DEFAULT_IMAGE }
+                };
+                guardarMenu(menuDefault);
+                return menuDefault;
+            }
+        });
 }
 
-// Función para guardar el menú en el almacenamiento local
+// Función para guardar el menú en Firebase
 function guardarMenu(menuSemanal) {
-    localStorage.setItem('menuSemanal', JSON.stringify(menuSemanal));
+    return database.ref('menuSemanal').set(menuSemanal);
 }
 
 // Función para mostrar el menú actual
 function mostrarMenuActual() {
-    const menuSemanal = cargarMenu();
-    const menuList = document.getElementById('menu-list');
-    menuList.innerHTML = '';
-    for (const [dia, menu] of Object.entries(menuSemanal)) {
-        const menuItem = document.createElement('div');
-        menuItem.classList.add('menu-item');
-        menuItem.innerHTML = `
-            <h4>${dia.charAt(0).toUpperCase() + dia.slice(1)} ${menu.fecha}</h4>
-            <img src="${menu.imagen || DEFAULT_IMAGE}" alt="${menu.plato}" class="menu-image">
-            <p><strong>Plato:</strong> ${menu.plato}</p>
-            <p><strong>Descripción:</strong> ${menu.descripcion}</p>
-            <p><strong>Precio:</strong> $${menu.precio.toFixed(2)}</p>
-            <button onclick="editarMenu('${dia}')">Editar</button>
-        `;
-        menuList.appendChild(menuItem);
-    }
+    cargarMenu().then((menuSemanal) => {
+        const menuList = document.getElementById('menu-list');
+        menuList.innerHTML = '';
+
+        // Definimos el orden de los días de la semana
+        const ordenDias = ['lunes', 'martes', 'miercoles', 'jueves', 'viernes'];
+
+        // Iteramos sobre el orden de los días
+        for (const dia of ordenDias) {
+            if (menuSemanal[dia]) {
+                const menu = menuSemanal[dia];
+                const menuItem = document.createElement('div');
+                menuItem.classList.add('menu-item');
+                menuItem.innerHTML = `
+                    <h4>${dia.charAt(0).toUpperCase() + dia.slice(1)} ${menu.fecha}</h4>
+                    <img src="${menu.imagen || DEFAULT_IMAGE}" alt="${menu.plato}" class="menu-image">
+                    <p><strong>Plato:</strong> ${menu.plato}</p>
+                    <p><strong>Descripción:</strong> ${menu.descripcion}</p>
+                    <p><strong>Precio:</strong> $${menu.precio.toFixed(2)}</p>
+                    <button onclick="editarMenu('${dia}')">Editar</button>
+                `;
+                menuList.appendChild(menuItem);
+            }
+        }
+    });
 }
+
 
 // Función para editar un menú existente
 function editarMenu(dia) {
-    const menuSemanal = cargarMenu();
-    const menu = menuSemanal[dia];
-    document.getElementById('dia').value = dia;
-    document.getElementById('fecha').value = menu.fecha;
-    document.getElementById('plato').value = menu.plato;
-    document.getElementById('descripcion').value = menu.descripcion;
-    document.getElementById('precio').value = menu.precio;
-    document.getElementById('image-preview').src = menu.imagen || DEFAULT_IMAGE;
+    cargarMenu().then((menuSemanal) => {
+        const menu = menuSemanal[dia];
+        document.getElementById('dia').value = dia;
+        document.getElementById('fecha').value = menu.fecha;
+        document.getElementById('plato').value = menu.plato;
+        document.getElementById('descripcion').value = menu.descripcion;
+        document.getElementById('precio').value = menu.precio;
+        document.getElementById('image-preview').src = menu.imagen || DEFAULT_IMAGE;
+    });
 }
 
 // Función para manejar el envío del formulario
 function handleSubmit(event) {
     event.preventDefault();
-    const menuSemanal = cargarMenu();
-    const dia = document.getElementById('dia').value;
-    const fecha = document.getElementById('fecha').value;
-    const plato = document.getElementById('plato').value;
-    const descripcion = document.getElementById('descripcion').value;
-    const precio = parseFloat(document.getElementById('precio').value);
-    const imagen = document.getElementById('image-preview').src;
+    cargarMenu().then((menuSemanal) => {
+        const dia = document.getElementById('dia').value;
+        const fecha = document.getElementById('fecha').value;
+        const plato = document.getElementById('plato').value;
+        const descripcion = document.getElementById('descripcion').value;
+        const precio = parseFloat(document.getElementById('precio').value);
+        const imagen = document.getElementById('image-preview').src;
 
-    menuSemanal[dia] = { 
-        fecha,
-        plato, 
-        descripcion, 
-        precio, 
-        imagen: imagen !== DEFAULT_IMAGE ? imagen : '' 
-    };
-    guardarMenu(menuSemanal);
-    mostrarMenuActual();
-    event.target.reset();
-    document.getElementById('image-preview').src = DEFAULT_IMAGE;
+        menuSemanal[dia] = {
+            fecha,
+            plato,
+            descripcion,
+            precio,
+            imagen: imagen !== DEFAULT_IMAGE ? imagen : ''
+        };
+        guardarMenu(menuSemanal).then(() => {
+            mostrarMenuActual();
+            event.target.reset();
+            document.getElementById('image-preview').src = DEFAULT_IMAGE;
+        });
+    });
 }
 
 // Función para manejar la vista previa de la imagen
@@ -103,7 +136,7 @@ function handleImagePreview(event) {
     const file = event.target.files[0];
     if (file) {
         const reader = new FileReader();
-        reader.onload = function(e) {
+        reader.onload = function (e) {
             document.getElementById('image-preview').src = e.target.result;
         }
         reader.readAsDataURL(file);

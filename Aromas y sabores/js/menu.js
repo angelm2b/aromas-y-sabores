@@ -1,13 +1,15 @@
 // Configuración de Firebase
 const firebaseConfig = {
-    apiKey: process.env.FIREBASE_API_KEY,
-    authDomain: process.env.FIREBASE_AUTH_DOMAIN,
-    projectId: process.env.FIREBASE_PROJECT_ID,
-    storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
-    messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
-    appId: process.env.FIREBASE_APP_ID,
-    measurementId: process.env.FIREBASE_MEASUREMENT_ID
+    apiKey: "AIzaSyAgw9EPC0LGCMe-aYtYxLg0qBGhYhI_ynI",
+    authDomain: "aromas-b712c.firebaseapp.com",
+    databaseURL: "https://aromas-b712c-default-rtdb.firebaseio.com",
+    projectId: "aromas-b712c",
+    storageBucket: "aromas-b712c.appspot.com",
+    messagingSenderId: "219362246807",
+    appId: "1:219362246807:web:563e505e242ea83246a9d2",
+    measurementId: "G-FFQMVSWWX2"
 };
+
 
 // Inicializar Firebase
 firebase.initializeApp(firebaseConfig);
